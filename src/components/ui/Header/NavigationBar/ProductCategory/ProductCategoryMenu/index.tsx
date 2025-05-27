@@ -2,31 +2,48 @@
 
 import { useState } from "react";
 
+import { ChevronRightDoubleIcon } from "@/public/icons";
 import Divider from "@/src/components/ui/Divider";
+import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
+import { ProductThumbnail } from "@/src/components/ui/ProductThumbnail";
 
-import { subCategory, subCategoryType } from "./constants";
+import {
+  ProductDetailType,
+  ProductGroupType,
+  subCategory,
+  subCategoryType,
+} from "./constants";
+import { ProductGroupItem } from "./ProductGroupItem";
 import { SubCategoryItem } from "./SubCategoryItem";
 
-const initialSubCategoryItem: subCategoryType = {
-  alias: "",
-  bestSellerProduct: [],
-  id: "0",
-  name: "",
-  productGroup: [],
-  srcImage: "",
-};
+const initialSubCategoryItem: subCategoryType = subCategory[0];
+
+const initialProductGroup: ProductGroupType[] =
+  initialSubCategoryItem.productGroup;
+
+const initialProduct: ProductDetailType[] =
+  initialSubCategoryItem.bestSellerProduct;
 
 export const ProductCategoryMenu = () => {
   const [selectedSub, setSelectedSub] = useState<subCategoryType>(
     initialSubCategoryItem,
   );
 
+  const [productGroup, setProductGroup] =
+    useState<ProductGroupType[]>(initialProductGroup);
+
+  const [productList, setProductList] =
+    useState<ProductDetailType[]>(initialProduct);
+
   const handleActionSub = (sub: subCategoryType) => {
     setSelectedSub(sub);
+
+    setProductGroup(sub.productGroup);
+    setProductList(sub.bestSellerProduct);
   };
 
   return (
-    <div className="absolute top-[100%] left-0 z-1">
+    <div className="absolute top-[100%] bottom-0 left-0 z-1 cursor-default">
       <div className="flex rounded-2xl bg-white shadow-lg">
         <div className="flex flex-col">
           {subCategory.map((sub: subCategoryType) => (
@@ -38,14 +55,36 @@ export const ProductCategoryMenu = () => {
             />
           ))}
         </div>
-        <div className="flex flex-col p-6">
-          <div className="pb-6">1</div>
+
+        <div className="flex min-w-max flex-col rounded-r-2xl rounded-b-2xl bg-gray-200 p-6">
+          <div className="grid grid-cols-3 gap-4 pb-6">
+            {productGroup.map((item: ProductGroupType) => (
+              <ProductGroupItem
+                item={item}
+                key={item.id}
+                onClick={(item) => console.log(item)}
+              />
+            ))}
+          </div>
 
           <Divider />
 
           <div className="flex flex-col gap-6 pt-6">
-            <div>1</div>
-            <div>2 </div>
+            <div className="flex items-center justify-between">
+              <p className="text-2xl font-semibold text-black">
+                Sản phẩm bán chạy
+              </p>
+              <LabelledIcon
+                textCustom={<p className="text-brand-500">Xem tất cả</p>}
+                suffixIcon={<ChevronRightDoubleIcon />}
+                isTrigger
+              />
+            </div>
+            <div className="grid grid-cols-5 gap-4">
+              {productList.map((product: ProductDetailType) => {
+                return <ProductThumbnail product={product} key={product.id} />;
+              })}
+            </div>
           </div>
         </div>
       </div>

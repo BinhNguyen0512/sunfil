@@ -27,6 +27,7 @@ export const SubCategoryItem = (props: Props) => {
         "flex items-center justify-between p-4",
         "transition-all duration-300",
         isTrigger ? "bg-gray-200" : "",
+        "cursor-pointer",
       )}
       onMouseEnter={() => onClick(subCategory)}
     >

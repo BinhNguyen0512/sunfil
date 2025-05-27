@@ -26,9 +26,8 @@ export interface ProductDetailType {
   alias: string;
 }
 
-export const bestSellerProductList: ProductDetailType[] = [1, 2, 3, 4, 5]
-  .sort(() => Math.random() - 0.5)
-  .map((element: number) => {
+export const bestSellerProductList: ProductDetailType[] = [1, 2, 3, 4, 5].map(
+  (element: number) => {
     return {
       id: element.toString(),
       srcImage: `/images/product-${element}.png`,
@@ -38,18 +37,19 @@ export const bestSellerProductList: ProductDetailType[] = [1, 2, 3, 4, 5]
       sellPrice: 329000,
       alias: `loc-gio-dong-co-${element}`,
     };
-  });
+  },
+);
 
-export const productGroupList: ProductGroupType[] = [1, 2, 3, 1, 2, 3]
-  .sort(() => Math.random() - 0.5)
-  .map((element: number, index: number) => {
+export const productGroupList: ProductGroupType[] = [1, 2, 3, 1, 2, 3].map(
+  (element: number, index: number) => {
     return {
       id: index.toString(),
       srcImage: `/images/product-group-${element}.png`,
       name: "Bộ lọc gió",
       alias: `bo-loc-gio-${index}`,
     };
-  });
+  },
+);
 
 const subMenuTitleList: string[] = [
   "Bộ lọc dầu",
