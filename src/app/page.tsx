@@ -2,8 +2,10 @@ import { WrapperPage } from "../components/ui/WrapperPage";
 
 export default function Home() {
   return (
-    <WrapperPage>
-      <div className="bg-gray-200">Main section</div>
-    </WrapperPage>
+    <section id="home-page" className="bg-gray-200">
+      <WrapperPage>
+        <div>Main section</div>
+      </WrapperPage>
+    </section>
   );
 }

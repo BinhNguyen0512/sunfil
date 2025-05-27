@@ -1,4 +1,4 @@
-import "@/css/globals.css";
+import "@/src/css/globals.css";
 
 import type { Metadata } from "next";
 import { Montserrat, Nunito } from "next/font/google";
