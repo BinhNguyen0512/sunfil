@@ -6,13 +6,14 @@ import {
   supportDealList,
   SupportDealType,
 } from "../constants/navigationBarConstant";
+import { ProductCategory } from "./ProductCategory";
 
 export const NavigationBar = () => {
   return (
     <WrapperPage>
-      <div className="flex items-center justify-between">
+      <div className="flex w-full items-center justify-between">
         <div className="flex w-full items-center gap-6">
-          <div className="">1</div>
+          <ProductCategory />
 
           <div className="flex w-full items-center gap-4">
             {aboutUsList.map((aboutUs: AboutUsType) => {
