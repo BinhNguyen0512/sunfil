@@ -17,5 +17,6 @@
   "editor.lineHeight": 0,
   "editor.fontSize": 12,
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "javascript.updateImportsOnFileMove.enabled": "always"
 }

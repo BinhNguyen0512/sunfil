@@ -18,6 +18,8 @@ const eslintConfig = [
         "error",
         {
           endOfLine: "auto",
+          singleQuote: false,
+          semi: true,
         },
       ],
       "simple-import-sort/imports": "error",

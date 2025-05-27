@@ -24,10 +24,10 @@ export const FooterInformation = () => {
             >
               <span
                 className={clsx(
+                  "absolute bottom-1",
                   "opacity-0 group-hover:opacity-100",
                   "-translate-x-2 bg-black transition-transform duration-300 group-hover:translate-x-0",
                   "inline-block h-0.5 w-4",
-                  "absolute bottom-1",
                 )}
               />
 
