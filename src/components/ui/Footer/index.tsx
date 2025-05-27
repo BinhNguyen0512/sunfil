@@ -1,3 +1,4 @@
+import { WrapperPage } from "../WrapperPage";
 import { AppDownload } from "./AppDownload";
 import { CompanyInformation } from "./CompanyInfomation";
 import { LegalLinks } from "./LegalLinks";
@@ -6,7 +7,7 @@ import { StoreSystem } from "./StoreSystem";
 
 const Footer = () => {
   return (
-    <>
+    <WrapperPage>
       <StoreSystem />
 
       <div className="flex gap-28">
@@ -15,7 +16,7 @@ const Footer = () => {
         <LegalLinks />
         <AppDownload />
       </div>
-    </>
+    </WrapperPage>
   );
 };
 

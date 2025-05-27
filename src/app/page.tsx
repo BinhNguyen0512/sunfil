@@ -1,9 +1,9 @@
-import { Suspense } from "react";
+import { WrapperPage } from "../components/ui/WrapperPage";
 
 export default function Home() {
   return (
-    <Suspense fallback={<>Loading...</>}>
+    <WrapperPage>
       <div className="bg-gray-200">Main section</div>
-    </Suspense>
+    </WrapperPage>
   );
 }
