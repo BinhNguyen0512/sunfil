@@ -1,6 +1,10 @@
+"use client";
+
 import clsx from "clsx";
 
 import { ChevronDownIcon, MenuIcon } from "@/public/icons";
+
+import { ProductCategoryMenu } from "./ProductCategoryMenu";
 
 export const ProductCategory = () => {
   return (
@@ -11,6 +15,7 @@ export const ProductCategory = () => {
         "flex items-center justify-between gap-6",
         "group",
         "hover:bg-brand-500 transition-all duration-300",
+        "relative",
       )}
     >
       <div className="flex items-center gap-2">
@@ -22,6 +27,8 @@ export const ProductCategory = () => {
       <div className="transition-all duration-300 group-hover:-rotate-180">
         <ChevronDownIcon />
       </div>
+
+      <ProductCategoryMenu />
     </div>
   );
 };

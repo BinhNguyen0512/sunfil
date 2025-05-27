@@ -12,11 +12,13 @@
     "@headlessui/react": "^2.2.4",
     "@hookform/resolvers": "^5.0.1",
     "clsx": "^2.1.1",
+    "lodash": "^4.17.21",
     "motion": "^12.13.0",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.4",
+    "slugify": "^1.6.6",
     "swiper": "^11.2.8"
   },
   "devDependencies": {
