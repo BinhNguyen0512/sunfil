@@ -1,8 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   h1 {
-    @apply text-xl lg:text-4xl font-bold;
+    @apply text-xl font-bold lg:text-4xl;
   }
 }
 
@@ -39,6 +39,8 @@
   --color-brand-800: #013065;
 
   --color-gray-200: #f4f6f8;
+
+  --color-yellow-primary: #faca4a;
 
   --color-secondary: #637381;
   --color-secondary-50: #1c252e;
