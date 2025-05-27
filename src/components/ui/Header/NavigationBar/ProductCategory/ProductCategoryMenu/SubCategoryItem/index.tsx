@@ -38,7 +38,6 @@ export const SubCategoryItem = (props: Props) => {
             src={subCategory.srcImage}
             height={40}
             width={40}
-            className="h-10 w-10"
           />
         </div>
         <p

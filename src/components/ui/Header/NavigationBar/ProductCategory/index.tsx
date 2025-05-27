@@ -1,12 +1,15 @@
 "use client";
 
 import clsx from "clsx";
+import { useState } from "react";
 
 import { ChevronDownIcon, MenuIcon } from "@/public/icons";
 
 import { ProductCategoryMenu } from "./ProductCategoryMenu";
 
 export const ProductCategory = () => {
+  const [isHover, setIsHover] = useState<boolean>(false);
+
   return (
     <div
       className={clsx(
@@ -17,6 +20,8 @@ export const ProductCategory = () => {
         "hover:bg-brand-500 transition-all duration-300",
         "relative",
       )}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
     >
       <div className="flex items-center gap-2">
         <div>
@@ -28,7 +33,7 @@ export const ProductCategory = () => {
         <ChevronDownIcon />
       </div>
 
-      <ProductCategoryMenu />
+      <ProductCategoryMenu isHover={isHover} />
     </div>
   );
 };
