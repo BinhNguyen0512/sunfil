@@ -6,7 +6,8 @@ interface Props {
   textCustom: ReactNode;
   suffixIcon?: ReactNode;
   className?: string;
-  cursorPointer?: boolean;
+  isTrigger?: boolean;
+  onClick?: () => void;
 }
 
 export const LabelledIcon = (props: Props) => {
@@ -15,15 +16,18 @@ export const LabelledIcon = (props: Props) => {
     textCustom = "",
     suffixIcon,
     className = "",
-    cursorPointer,
+    isTrigger,
+    onClick,
   } = props;
   return (
     <div
       className={clsx(
         "flex items-center gap-2",
         className,
-        cursorPointer ? "cursor-pointer" : "",
+        isTrigger &&
+          "hover:text-brand-500 cursor-pointer font-semibold text-black transition-all duration-300",
       )}
+      onClick={onClick}
     >
       {prefixIcon && <div className="">{prefixIcon}</div>}
       {textCustom}

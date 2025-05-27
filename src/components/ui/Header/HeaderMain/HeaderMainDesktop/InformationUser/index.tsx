@@ -26,14 +26,14 @@ export const InformationUser = () => {
             </div>
           </div>
         }
-        textCustom={<p className="text-md font-medium text-black">Giỏ hàng</p>}
-        cursorPointer
+        textCustom={<p className="text-md font-medium">Giỏ hàng</p>}
+        isTrigger
       />
 
       <LabelledIcon
         prefixIcon={<AccountIcon />}
-        textCustom={<p className="text-md font-medium text-black">Tài khoản</p>}
-        cursorPointer
+        textCustom={<p className="text-md font-medium">Tài khoản</p>}
+        isTrigger
       />
     </div>
   );

@@ -3,7 +3,7 @@ import { CallIcon, SaleIcon, SmartPhoneIcon } from "@/public/icons";
 import { LabelledIcon } from "../../LabelledIcon";
 import { WrapperPage } from "../../WrapperPage";
 
-const textStyle = "text-base font-normal text-white";
+const textStyle = "text-base font-normal text-white cursor-pointer";
 
 export const TopBar = () => {
   return (
