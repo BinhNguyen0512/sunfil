@@ -6,7 +6,7 @@ interface Props {
   height?: number;
   width?: number;
   quality?: number;
-  loading?: "lazy" | "eager";
+  loading?: "lazy" | "eager" | undefined;
   priority?: boolean;
   className?: string;
 }
@@ -16,7 +16,7 @@ export const ImageCustom = (props: Props) => {
     alt = "",
     height,
     width,
-    loading = "lazy",
+    loading = undefined,
     priority = false,
     quality = 100,
     src,

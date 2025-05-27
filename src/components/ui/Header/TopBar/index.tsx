@@ -7,7 +7,7 @@ const textStyle = "text-base font-normal text-white";
 
 export const TopBar = () => {
   return (
-    <div className="bg-linear-to-r from-[#0D57C6] via-[#37CFFF] to-[#0F5ED6]">
+    <div className="hidden bg-linear-to-r from-[#0D57C6] via-[#37CFFF] to-[#0F5ED6] lg:block">
       <WrapperPage>
         <div className="flex items-center justify-between py-2">
           <LabelledIcon

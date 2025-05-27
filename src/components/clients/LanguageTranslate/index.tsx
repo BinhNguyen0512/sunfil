@@ -16,7 +16,7 @@ export const LanguageTranslate = () => {
         <div>
           <VietNamIcon />
         </div>
-        <p className="text-xl font-medium">VI</p>
+        <p className="text-md font-medium">VI</p>
       </div>
       <div>
         <ChevronDownIcon className="stroke-black" />
