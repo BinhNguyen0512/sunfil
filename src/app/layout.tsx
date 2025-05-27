@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 
 import Footer from "../components/ui/Footer";
 import Header from "../components/ui/Header";
+import { Sticky } from "../components/ui/Sticky";
 // import Sticky from "../components/ui/Sticky";
 
 const montserrat = Montserrat({
@@ -31,11 +32,11 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning={true}>
       <body className={`${montserrat.variable} ${nunito.variable} antialiased`}>
-        <div className="w-full h-full">
+        <div className="h-full w-full">
           <Header />
           {children}
           <Footer />
-          {/* <Sticky /> */}
+          <Sticky />
         </div>
       </body>
     </html>
