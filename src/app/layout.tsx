@@ -4,6 +4,10 @@ import type { Metadata } from "next";
 import { Montserrat, Nunito } from "next/font/google";
 import { ReactNode } from "react";
 
+import Footer from "../components/ui/Footer";
+import Header from "../components/ui/Header";
+// import Sticky from "../components/ui/Sticky";
+
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["vietnamese"],
@@ -27,7 +31,12 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning={true}>
       <body className={`${montserrat.variable} ${nunito.variable} antialiased`}>
-        {children}
+        <div className="w-full h-full">
+          <Header />
+          {children}
+          <Footer />
+          {/* <Sticky /> */}
+        </div>
       </body>
     </html>
   );

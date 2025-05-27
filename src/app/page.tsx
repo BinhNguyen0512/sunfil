@@ -1,3 +1,9 @@
+import { Suspense } from "react";
+
 export default function Home() {
-  return <div className="text-xl text-brand-500 ">ABC</div>;
+  return (
+    <Suspense fallback={<>Loading...</>}>
+      <div className="bg-gray-200">Main section</div>
+    </Suspense>
+  );
 }
