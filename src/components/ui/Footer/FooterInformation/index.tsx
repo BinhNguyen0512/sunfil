@@ -1,13 +1,14 @@
 import clsx from "clsx";
-import Image from "next/image";
 import { Fragment } from "react";
 
+import { ImageCustom } from "../../ImageCustom";
 import { WrapperPage } from "../../WrapperPage";
 import {
   ContentType,
   footerInformationList,
   FooterInformationType,
 } from "./constants";
+import { Industry } from "./Industry";
 
 export const FooterInformation = () => {
   const renderFooterInformationElement = (content: ContentType) => {
@@ -18,7 +19,7 @@ export const FooterInformation = () => {
             <a
               href={content.link}
               className={clsx(
-                "text-secondary text-md font-semibold",
+                "text-secondary lg:text-md text-base font-semibold",
                 "group relative",
               )}
             >
@@ -37,7 +38,7 @@ export const FooterInformation = () => {
             </a>
           </li>
         ) : (
-          <Image
+          <ImageCustom
             className="cursor-pointer"
             src={content.src || ""}
             height={64}
@@ -55,11 +56,13 @@ export const FooterInformation = () => {
     return (
       <div
         className={clsx(
-          `flex flex-col gap-6`,
-          footerInformation.id === "viet-hung" ? "col-span-3" : "",
+          `flex flex-col gap-4 lg:gap-6`,
+          footerInformation.id === "viet-hung"
+            ? "col-span-2 lg:col-span-3"
+            : "",
         )}
       >
-        <p className="text-brand-800 min-h-12 text-2xl font-semibold">
+        <p className="text-brand-800 min-h-8 text-lg font-semibold lg:min-h-12 lg:text-2xl">
           {footerInformation.title}
         </p>
         <ul className="flex flex-col gap-4">
@@ -89,7 +92,17 @@ export const FooterInformation = () => {
             </Fragment>
           ),
         )}
+
+        <Industry
+          classNameWrapper="block lg:hidden"
+          classNameElement="flex flex-col justify-between items-start h-full"
+        />
       </div>
+
+      <Industry
+        classNameWrapper="hidden lg:block"
+        classNameElement="flex items-center justify-between py-4"
+      />
     </WrapperPage>
   );
 };
