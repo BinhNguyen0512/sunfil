@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 
 interface Props
@@ -9,10 +10,16 @@ interface Props
 }
 
 export const ButtonCustom = (props: Props) => {
-  const { children, ...rest } = props;
+  const { children, className, ...rest } = props;
 
   return (
-    <button className="cursor-pointer" {...rest}>
+    <button
+      className={clsx(
+        "cursor-pointer transition-all duration-300 hover:scale-[1.05]",
+        className,
+      )}
+      {...rest}
+    >
       {children}
     </button>
   );

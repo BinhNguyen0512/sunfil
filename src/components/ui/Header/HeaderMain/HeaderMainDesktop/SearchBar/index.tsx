@@ -1,3 +1,9 @@
+import { InputCustomSearch } from "@/src/components/form/InputCustom/InputCustomSearch";
+
 export const SearchBar = () => {
-  return <div className="flex-1">2</div>;
+  return (
+    <div className="flex-1">
+      <InputCustomSearch />
+    </div>
+  );
 };

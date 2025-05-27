@@ -6,19 +6,19 @@ import { WrapperPage } from "../../WrapperPage";
 export const StoreSystem = () => {
   return (
     <WrapperPage backgroundColor="bg-brand-50">
-      <div className="flex lg:flex-row flex-col justify-between lg:items-center lg:gap-0 gap-4 lg:py-10 py-4">
-        <div className="flex gap-4 items-center">
+      <div className="flex flex-col justify-between gap-4 py-4 lg:flex-row lg:items-center lg:gap-0 lg:py-10">
+        <div className="flex items-center gap-4">
           <div>
             <LocationIcon />
           </div>
-          <p className="text-base lg:text-3xl font-medium">
+          <p className="text-base font-medium lg:text-3xl">
             Xem hệ thống 88 cửa hàng trên toàn quốc
           </p>
         </div>
-        <div className="flex justify-center lg">
-          <ButtonCustom className="px-6 py-4 rounded-full bg-white cursor-pointer">
+        <div className="lg flex justify-center">
+          <ButtonCustom className="rounded-full bg-white px-6 py-4">
             <div className="flex items-center justify-between gap-3">
-              <p className="text-base lg:text-2xl text-brand-600 font-medium lg:font-semibold">
+              <p className="text-brand-600 text-base font-medium lg:text-2xl lg:font-semibold">
                 Xem ngay
               </p>
               <div>
