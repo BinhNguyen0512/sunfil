@@ -150,9 +150,8 @@ export const ProductFilter = () => {
           className="p-3"
         />
 
-        <Divider />
-
         <div className="block lg:hidden">
+          <Divider />
           <ProductSortFilter />
         </div>
 

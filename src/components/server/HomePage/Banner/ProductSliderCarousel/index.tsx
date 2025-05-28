@@ -22,7 +22,10 @@ export const ProductSliderCarousel = () => {
   }, []);
 
   return (
-    <div className={clsx("p-12", "banner__carousel-product")} ref={divRef}>
+    <div
+      className={clsx("p-8 xl:p-12", "banner__carousel-product")}
+      ref={divRef}
+    >
       {!onloadCompleted ? (
         <PreviewList previewNumber={5} />
       ) : (

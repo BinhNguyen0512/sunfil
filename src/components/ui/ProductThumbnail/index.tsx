@@ -75,7 +75,7 @@ export const ProductThumbnail = (props: Props) => {
           <p className="text-error-dark text-xl font-semibold">
             {ConvertPrice(product.sellPrice)}
           </p>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <p className="text-disabled text-sm font-normal line-through lg:text-base">
               {ConvertPrice(product.price)}
             </p>
