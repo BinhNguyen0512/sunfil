@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @layer base {
   h1 {
@@ -51,6 +51,9 @@
   --color-error-dark: #b71d18;
   --color-error-main: #ff5630;
 
+  --color-warning-light: #ffd666;
+  --color-warning-main: #ffab00;
+
   /* animation */
 
   --animate-placeholder-slide: placeholderSlide 2.5s ease-out forwards;
@@ -58,11 +61,11 @@
   @keyframes placeholderSlide {
     0% {
       transform: translateX(0);
-      opacity: '0';
+      opacity: "0";
     }
     100% {
       transform: translateX(100%);
-      opacity: '1';
+      opacity: "1";
     }
   }
 }

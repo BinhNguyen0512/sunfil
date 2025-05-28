@@ -17,6 +17,9 @@ export const PreviewList = (props: Props) => {
               key={index}
               product={product}
               maxWidthElement="max-w-[260px]"
+              isScale={false}
+              isSaleFire
+              isBuyButton
             />
           ))
           .slice(0, previewNumber)}

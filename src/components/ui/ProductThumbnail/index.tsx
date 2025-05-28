@@ -1,9 +1,12 @@
 import clsx from "clsx";
 
+import { FireIcon } from "@/public/icons";
 import { ProductDetailType } from "@/src/constants/productList";
 
 import { ConvertPrice } from "../../../helpers/convertPrice";
+import { ButtonCustom } from "../../form/ButtonCustom";
 import { ImageCustom } from "../ImageCustom";
+import { LabelledIcon } from "../LabelledIcon";
 
 interface Props {
   product: ProductDetailType;
@@ -11,6 +14,9 @@ interface Props {
   heightImage?: number;
   widthImage?: number;
   maxWidthElement?: string;
+  isScale?: boolean;
+  isSaleFire?: boolean;
+  isBuyButton?: boolean;
 }
 export const ProductThumbnail = (props: Props) => {
   const {
@@ -19,6 +25,9 @@ export const ProductThumbnail = (props: Props) => {
     widthImage,
     heightImage,
     maxWidthElement = "",
+    isScale = true,
+    isSaleFire = false,
+    isBuyButton = false,
   } = props;
   return (
     <div
@@ -28,7 +37,7 @@ export const ProductThumbnail = (props: Props) => {
         "flex flex-col gap-4",
         "bg-white p-2",
         "cursor-pointer",
-        "transition duration-300 hover:scale-[1.05]",
+        isScale ? "transition duration-300 hover:scale-[1.05]" : "",
       )}
     >
       <div className={clsx("h-full", classNameImageWrapper, maxWidthElement)}>
@@ -41,6 +50,19 @@ export const ProductThumbnail = (props: Props) => {
         />
       </div>
       <div className="flex flex-col gap-4">
+        {isSaleFire && (
+          <LabelledIcon
+            prefixIcon={<FireIcon className="rounded-full" />}
+            textCustom={
+              <p className="text-base font-semibold text-black">Giá cực sốc</p>
+            }
+            className={clsx(
+              "px-2 py-1",
+              "xxl:w-[60%] xs:w-[40%] w-[60%] rounded-full sm:w-[80%]",
+              "from-warning-light to-warning-main bg-linear-to-r",
+            )}
+          />
+        )}
         <p
           className={clsx(
             "text-md line-clamp-2 min-h-[48px] font-bold",
@@ -62,6 +84,17 @@ export const ProductThumbnail = (props: Props) => {
             </p>
           </div>
         </div>
+
+        {isBuyButton && (
+          <ButtonCustom
+            className={clsx(
+              "bg-brand-50 rounded-lg py-2",
+              "hover:!scale-[1.03]",
+            )}
+          >
+            <p className="text-brand-600 text-md font-semibold">Mua ngay</p>
+          </ButtonCustom>
+        )}
       </div>
     </div>
   );

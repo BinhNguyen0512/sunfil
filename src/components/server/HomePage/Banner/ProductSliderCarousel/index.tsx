@@ -55,14 +55,17 @@ export const ProductSliderCarousel = () => {
             navigation={true}
             isButtonNext
             isButtonPreview
-            styleButtonNext="!top-[45%] lg:top-[50%] right-[10px] lg:right-[-24px] z-10 absolute"
-            styleButtonPrev="!top-[45%] lg:top-[50%] left-[10px] lg:left-[-24px] z-10 absolute"
+            styleButtonNext="!top-[45%] lg:top-[50%] right-[-24px] z-10 absolute"
+            styleButtonPrev="!top-[45%] lg:top-[50%] left-[-24px] z-10 absolute"
           >
             {productList.map((product: ProductDetailType, index: number) => (
               <SwiperSlide key={index}>
                 <ProductThumbnail
                   product={product}
                   maxWidthElement="max-w-[328px] sm:max-w-[260px]"
+                  isScale={false}
+                  isSaleFire
+                  isBuyButton
                 />
               </SwiperSlide>
             ))}
