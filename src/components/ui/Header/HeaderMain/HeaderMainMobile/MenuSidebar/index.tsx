@@ -105,7 +105,6 @@ export const MenuSidebar = (props: Props) => {
             </>
           }
           classNameSubWrapper="mx-2 mb-2 rounded-lg bg-[#eaeffa]"
-          isDivider
         />
       </Fragment>
     );

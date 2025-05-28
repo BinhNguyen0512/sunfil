@@ -15,7 +15,6 @@ interface Props {
   collapsibleItemSub: ReactNode;
   classNameSubWrapper?: string;
   selectedOptions: string[];
-  isDivider?: boolean;
 }
 
 export const CollapsibleOptionList = (props: Props) => {

@@ -15,6 +15,7 @@ export { default as DeviceIcon } from "./icon_device.svg";
 export { default as EnterCodeIcon } from "./icon_enter-code.svg";
 export { default as ExitIcon } from "./icon_exit.svg";
 export { default as FastShippingIcon } from "./icon_fast-shipping.svg";
+export { default as FilterIcon } from "./icon_filter.svg";
 export { default as FireIcon } from "./icon_fire.svg";
 export { default as FreeShipIcon } from "./icon_freeship.svg";
 export { default as FreeShipCardIcon } from "./icon_freeship-card.svg";

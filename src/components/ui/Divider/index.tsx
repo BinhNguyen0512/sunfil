@@ -6,7 +6,7 @@ interface Props {
 
 const Divider = (props: Props) => {
   const { className } = props;
-  return <div className={clsx("h-px w-full bg-gray-300", className)} />;
+  return <div className={clsx("bg-gray-divider h-px w-full", className)} />;
 };
 
 export default Divider;
