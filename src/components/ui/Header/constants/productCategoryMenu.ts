@@ -74,3 +74,11 @@ export const subCategory: subCategoryType[] = subMenuTitleList.map(
     };
   },
 );
+
+export const initialSubCategoryItem: subCategoryType = subCategory[0];
+
+export const initialProductGroup: ProductGroupType[] =
+  initialSubCategoryItem.productGroup;
+
+export const initialProduct: ProductDetailType[] =
+  initialSubCategoryItem.bestSellerProduct;

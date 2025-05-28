@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 import { ImageCustom } from "@/src/components/ui/ImageCustom";
 
-import { ProductGroupType } from "../constants";
+import { ProductGroupType } from "../../../../constants/productCategoryMenu";
 
 interface Props {
   item: ProductGroupType;

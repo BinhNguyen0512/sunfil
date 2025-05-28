@@ -3,27 +3,22 @@
 import { useState } from "react";
 
 import { ChevronRightDoubleIcon } from "@/public/icons";
-import { AnimationDropDown } from "@/src/components/ui/AnimationDropDown";
+import { AnimationDropDown } from "@/src/components/ui/Animation/AnimationDropDown";
 import Divider from "@/src/components/ui/Divider";
 import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
 import { ProductThumbnail } from "@/src/components/ui/ProductThumbnail";
 
 import {
+  initialProduct,
+  initialProductGroup,
+  initialSubCategoryItem,
   ProductDetailType,
   ProductGroupType,
   subCategory,
   subCategoryType,
-} from "./constants";
+} from "../../../constants/productCategoryMenu";
 import { ProductGroupItem } from "./ProductGroupItem";
 import { SubCategoryItem } from "./SubCategoryItem";
-
-const initialSubCategoryItem: subCategoryType = subCategory[0];
-
-const initialProductGroup: ProductGroupType[] =
-  initialSubCategoryItem.productGroup;
-
-const initialProduct: ProductDetailType[] =
-  initialSubCategoryItem.bestSellerProduct;
 
 interface Props {
   isHover: boolean;

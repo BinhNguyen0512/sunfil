@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { ChevronDownIcon } from "@/public/icons";
 import { ImageCustom } from "@/src/components/ui/ImageCustom";
 
-import { subCategoryType } from "../constants";
+import { subCategoryType } from "../../../../constants/productCategoryMenu";
 
 interface Props {
   subCategory: subCategoryType;
