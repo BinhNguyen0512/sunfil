@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Fragment, useEffect, useState } from "react";
 
 import { ChevronDownIcon, ExitIcon } from "@/public/icons";
-import { AnimationScrollDown } from "@/src/components/ui/Animation/AnimationScrollDown";
+import { CollapsibleOptionList } from "@/src/components/ui/CollapsibleOptionList";
 import Divider from "@/src/components/ui/Divider";
 import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
 import { Logo } from "@/src/components/ui/Logo";
@@ -20,7 +20,7 @@ import {
   subCategory,
   subCategoryType,
 } from "../../../constants/productCategoryMenu";
-import { MenuSidebarItem } from "./MenuSidebarItem";
+import { MenuSidebarItemTitle } from "./MenuSidebarItem";
 
 interface Props {
   isOpenMenu: boolean;
@@ -54,52 +54,59 @@ export const MenuSidebar = (props: Props) => {
   const renderMenuSidebarItem = (sub: subCategoryType) => {
     return (
       <Fragment key={sub.id}>
-        {/* Menu category item*/}
-        <MenuSidebarItem
-          name={sub.name}
-          onClick={() => console.log("handle sub menu")}
-          suffixIcon={
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                handleActionMenuItem(sub);
-              }}
-              className="flex h-full w-8 items-center justify-center"
-            >
-              <ChevronDownIcon
-                className={clsx(
-                  "stroke-black transition-all duration-300",
-                  selectedSubList.includes(sub.id) ? "-rotate-180" : "rotate-0",
-                )}
-              />
-            </div>
-          }
-        />
-
-        {/* -> product group */}
-        <li className="mx-2 mb-2 rounded-lg bg-[#eaeffa]">
-          <AnimationScrollDown isTrigger={selectedSubList.includes(sub.id)}>
-            {sub.productGroup.map(
-              (productGroup: ProductGroupType, indexProductGroup: number) => {
-                return (
-                  <Fragment key={productGroup.id}>
-                    <MenuSidebarItem
-                      name={productGroup.name}
-                      classNameText="!text-base !font-semibold"
-                      suffixIcon={<></>}
-                      onClick={() => {
-                        console.log("trigger product group");
-                      }}
-                    />
-                    {sub.productGroup.length - 1 !== indexProductGroup && (
-                      <Divider />
+        <CollapsibleOptionList
+          collapsibleItemTitle={
+            <MenuSidebarItemTitle
+              name={sub.name}
+              onClick={() => console.log("handle sub menu")}
+              suffixIcon={
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleActionMenuItem(sub);
+                  }}
+                  className="flex h-full w-8 items-center justify-center"
+                >
+                  <ChevronDownIcon
+                    className={clsx(
+                      "stroke-black transition-all duration-300",
+                      selectedSubList.includes(sub.id)
+                        ? "-rotate-180"
+                        : "rotate-0",
                     )}
-                  </Fragment>
-                );
-              },
-            )}
-          </AnimationScrollDown>
-        </li>
+                  />
+                </div>
+              }
+            />
+          }
+          selectedOptions={selectedSubList}
+          collapsibleOptionId={sub.id}
+          collapsibleItemSub={
+            <>
+              {sub.productGroup.map(
+                (productGroup: ProductGroupType, indexProductGroup: number) => {
+                  return (
+                    <Fragment key={productGroup.id}>
+                      <MenuSidebarItemTitle
+                        name={productGroup.name}
+                        classNameText="!text-base !font-semibold"
+                        suffixIcon={<></>}
+                        onClick={() => {
+                          console.log("trigger product group");
+                        }}
+                      />
+                      {sub.productGroup.length - 1 !== indexProductGroup && (
+                        <Divider />
+                      )}
+                    </Fragment>
+                  );
+                },
+              )}
+            </>
+          }
+          classNameSubWrapper="mx-2 mb-2 rounded-lg bg-[#eaeffa]"
+          isDivider
+        />
       </Fragment>
     );
   };

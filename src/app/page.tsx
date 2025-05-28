@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { BreadcrumbCustom } from "../components/server/Breadcrumb";
 import Banner from "../components/server/HomePage/Banner";
 import Benefits from "../components/server/HomePage/Benefits";
+import ProductView from "../components/server/HomePage/ProductView";
 import { WrapperPage } from "../components/ui/WrapperPage";
 
 export const breadCrumb = [
@@ -23,7 +24,7 @@ export default function Home() {
           <BreadcrumbCustom listBreadCrumb={breadCrumb} />
 
           <Banner />
-          <div>3</div>
+          <ProductView />
           <Benefits />
         </div>
       </WrapperPage>

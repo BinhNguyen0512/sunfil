@@ -3,6 +3,8 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
 
+import { CollapsibleOptionItem } from "@/src/components/ui/CollapsibleOptionList/CollapsibleOptionItem";
+
 interface Props {
   name: string;
   suffixIcon: ReactNode;
@@ -11,22 +13,33 @@ interface Props {
   onClick: () => void;
 }
 
-export const MenuSidebarItem = (props: Props) => {
+export const MenuSidebarItemTitle = (props: Props) => {
   const { name, suffixIcon, classNameWrapper, classNameText, onClick } = props;
   return (
-    <li
-      className={clsx(
-        "flex w-full items-center justify-between px-2 py-3",
+    <CollapsibleOptionItem
+      classNameWrapper={clsx(
+        "flex items-center justify-between ",
         classNameWrapper,
       )}
+      title={name}
+      classNameText={classNameText}
+      suffix={suffixIcon}
       onClick={onClick}
-    >
-      <div className="w-full">
-        <p className={clsx("text-md font-semibold text-black", classNameText)}>
-          {name}
-        </p>
-      </div>
-      {suffixIcon}
-    </li>
+    />
+  );
+};
+
+export const MenuSidebarItemSub = (props: Props) => {
+  const { name, classNameWrapper, onClick } = props;
+  return (
+    <CollapsibleOptionItem
+      classNameWrapper={clsx(
+        "flex items-center justify-between ",
+        classNameWrapper,
+      )}
+      title={name}
+      classNameText="!text-base !font-semibold"
+      onClick={onClick}
+    />
   );
 };
