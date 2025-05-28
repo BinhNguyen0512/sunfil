@@ -11,6 +11,7 @@ import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
 import { ConvertPrice } from "@/src/helpers/convertPrice";
 import { handleFilter } from "@/src/helpers/filter";
 
+import { ProductSortFilter } from "../components/ProductSortFilter";
 import {
   productCategoryFilterList,
   ProductCategoryFilterType,
@@ -148,6 +149,12 @@ export const ProductFilter = () => {
           }
           className="p-3"
         />
+
+        <Divider />
+
+        <div className="block lg:hidden">
+          <ProductSortFilter />
+        </div>
 
         <Divider />
 

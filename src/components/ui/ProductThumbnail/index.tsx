@@ -49,7 +49,7 @@ export const ProductThumbnail = (props: Props) => {
           className="h-full w-full"
         />
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2 lg:gap-4">
         {isSaleFire && (
           <LabelledIcon
             prefixIcon={<FireIcon className="rounded-full" />}
@@ -65,7 +65,7 @@ export const ProductThumbnail = (props: Props) => {
         )}
         <p
           className={clsx(
-            "text-md line-clamp-2 min-h-[48px] font-bold",
+            "lg:text-md min-h-[36px]: line-clamp-2 text-base font-bold lg:min-h-[48px]",
             maxWidthElement,
           )}
         >
@@ -76,10 +76,10 @@ export const ProductThumbnail = (props: Props) => {
             {ConvertPrice(product.sellPrice)}
           </p>
           <div className="flex gap-4">
-            <p className="text-disabled text-base font-normal line-through">
+            <p className="text-disabled text-sm font-normal line-through lg:text-base">
               {ConvertPrice(product.price)}
             </p>
-            <p className="text-error-dark text-md font-medium">
+            <p className="text-error-dark lg:text-md text-base font-medium">
               -{product.discountPercent}%
             </p>
           </div>
@@ -92,7 +92,9 @@ export const ProductThumbnail = (props: Props) => {
               "hover:!scale-[1.03]",
             )}
           >
-            <p className="text-brand-600 text-md font-semibold">Mua ngay</p>
+            <p className="text-brand-600 lg:text-md text-base font-semibold">
+              Mua ngay
+            </p>
           </ButtonCustom>
         )}
       </div>
