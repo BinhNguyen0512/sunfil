@@ -16,7 +16,7 @@ export const BreadcrumbCustom = (props: Props) => {
 
   return (
     <div className="h-full w-full">
-      <div className="flex h-full items-center gap-2 px-4 lg:gap-4 lg:px-0">
+      <div className="flex h-full items-center gap-2 lg:gap-4 lg:px-0">
         {listBreadCrumb.map((breadCrumb: BreadcrumbType, index: number) => (
           <div key={index} className="flex gap-2 lg:gap-4">
             {breadCrumb.link ? (

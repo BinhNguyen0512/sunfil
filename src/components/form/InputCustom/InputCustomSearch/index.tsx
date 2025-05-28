@@ -52,7 +52,7 @@ export const InputCustomSearch = () => {
                   )
                 }
                 suffixIcon={
-                  <div className="relative z-1 flex items-center gap-8">
+                  <div className="relative z-1 flex items-center gap-3 lg:gap-8">
                     <div className="cursor-pointer">
                       <CameraIcon />
                     </div>
