@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
-import { ConvertPrice } from "../../helpers/convertPrice";
-import { ProductDetailType } from "../Header/NavigationBar/ProductCategory/ProductCategoryMenu/constants";
+import { ConvertPrice } from "../../../helpers/convertPrice";
+import { ProductDetailType } from "../Header/constants/productCategoryMenu";
 import { ImageCustom } from "../ImageCustom";
 
 interface Props {

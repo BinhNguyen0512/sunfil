@@ -1,6 +1,7 @@
 export { default as AccountIcon } from "./icon_account.svg";
 export { default as AppleIcon } from "./icon_apple.svg";
 export { default as Box30Icon } from "./icon_box-30.svg";
+export { default as BreadcrumbIcon } from "./icon_breadcrumb.svg";
 export { default as CallIcon } from "./icon_call.svg";
 export { default as CameraIcon } from "./icon_camera.svg";
 export { default as CartIcon } from "./icon_cart.svg";

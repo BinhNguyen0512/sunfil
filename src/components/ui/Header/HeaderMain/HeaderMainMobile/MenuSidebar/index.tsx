@@ -4,12 +4,12 @@ import clsx from "clsx";
 import { Fragment, useEffect, useState } from "react";
 
 import { ChevronDownIcon, ExitIcon } from "@/public/icons";
-import { handleFilter } from "@/src/components/helpers/filter";
 import { AnimationScrollDown } from "@/src/components/ui/Animation/AnimationScrollDown";
 import Divider from "@/src/components/ui/Divider";
 import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
 import { Logo } from "@/src/components/ui/Logo";
 import { Overlay } from "@/src/components/ui/Overlay";
+import { handleFilter } from "@/src/helpers/filter";
 
 import {
   supportDealList,
