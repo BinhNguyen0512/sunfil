@@ -28,7 +28,7 @@ export const InputCustomSearch = () => {
 
   return (
     <form onSubmitCapture={handleSubmit(onSubmit)} className="flex flex-1">
-      <div className="flex-1 px-4">
+      <div className="flex-1 px-0 lg:px-4">
         <Combobox value={value}>
           <Controller
             name="search"
@@ -43,23 +43,25 @@ export const InputCustomSearch = () => {
 
                   setValue(value);
                 }}
-                className={"h-12 placeholder:relative placeholder:-z-10"}
+                className={
+                  "h-8 placeholder:relative lg:h-12 lg:placeholder:-z-10"
+                }
                 customText={
                   !value && (
-                    <span className="animate-placeholder-slide pointer-events-none absolute top-1/2 left-2 -z-1 h-10 w-[154px] -translate-y-1/2 bg-white px-2" />
+                    <span className="animate-placeholder-slide pointer-events-none absolute top-1/2 left-2 h-10 w-[154px] -translate-y-1/2 bg-white px-2 lg:-z-1" />
                   )
                 }
                 suffixIcon={
-                  <div className="flex items-center gap-8">
+                  <div className="relative z-1 flex items-center gap-8">
                     <div className="cursor-pointer">
                       <CameraIcon />
                     </div>
                     <ButtonCustom
                       type="submit"
-                      className="bg-brand-500 flex w-20 cursor-pointer items-center justify-center rounded-full p-6 py-3"
+                      className="bg-brand-500 flex w-16 cursor-pointer items-center justify-center rounded-full p-6 py-3 lg:w-20"
                     >
                       <div>
-                        <SearchIcon />
+                        <SearchIcon className="h-4 w-4 lg:h-6 lg:w-6" />
                       </div>
                     </ButtonCustom>
                   </div>

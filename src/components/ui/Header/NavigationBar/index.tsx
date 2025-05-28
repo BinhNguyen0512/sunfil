@@ -10,7 +10,7 @@ import { ProductCategory } from "./ProductCategory";
 
 export const NavigationBar = () => {
   return (
-    <WrapperPage>
+    <WrapperPage classnameWrapper={"lg:block hidden"}>
       <div className="flex w-full items-center justify-between">
         <div className="flex w-full items-center gap-6">
           <ProductCategory />
