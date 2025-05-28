@@ -3,7 +3,7 @@ import {
   ProductGroup_Alias_Enum,
 } from "../enum/productFilterList";
 
-export interface productGroupType {
+export interface ProductGroupFilterType {
   id: string;
   name: string;
   alias?: string;
@@ -14,7 +14,7 @@ export interface productGroupType {
 export interface ProductCategoryFilterType {
   id: string;
   title: string;
-  productGroup: productGroupType[];
+  productGroup: ProductGroupFilterType[];
 }
 
 export const productCategoryFilterList: ProductCategoryFilterType[] = [
@@ -56,6 +56,7 @@ export const productCategoryFilterList: ProductCategoryFilterType[] = [
       {
         id: "1",
         priceTo: 100000,
+        priceFrom: 0,
         name: "Dưới",
       },
       {
@@ -73,6 +74,7 @@ export const productCategoryFilterList: ProductCategoryFilterType[] = [
       {
         id: "4",
         priceFrom: 500000,
+        priceTo: 0,
         name: "Trên",
       },
     ],
