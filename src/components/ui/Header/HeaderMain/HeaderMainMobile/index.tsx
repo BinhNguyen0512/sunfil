@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { AccountIcon, MenuIcon } from "@/public/icons";
 
-import { ImageCustom } from "../../../ImageCustom";
+import { Logo } from "../../../Logo";
 import { SearchBar } from "../HeaderMainDesktop/SearchBar";
 import { MenuSidebar } from "./MenuSidebar";
 
@@ -12,7 +12,12 @@ export const HeaderMainMobile = () => {
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
 
   const handleOpenMenu = () => {
-    setIsOpenMenu(!isOpenMenu);
+    if (isOpenMenu) {
+      setIsOpenMenu(false);
+      return;
+    }
+
+    setIsOpenMenu(true);
   };
 
   return (
@@ -26,15 +31,7 @@ export const HeaderMainMobile = () => {
             >
               <MenuIcon className="stroke-black" />
             </div>
-            <div className="flex w-full items-center justify-center">
-              <ImageCustom
-                src="/images/logo.png"
-                alt="logo"
-                height={111}
-                width={250}
-                className="h-full max-w-24"
-              />
-            </div>
+            <Logo height={111} width={250} />
 
             <div>
               <AccountIcon />
@@ -44,7 +41,10 @@ export const HeaderMainMobile = () => {
             </div>
           </div>
         </div>
-        <MenuSidebar isOpenMenu={isOpenMenu} />
+        <MenuSidebar
+          isOpenMenu={isOpenMenu}
+          onClickExitMenu={() => setIsOpenMenu(false)}
+        />
       </div>
     </>
   );

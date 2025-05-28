@@ -1,13 +1,20 @@
 "use client";
 
 import clsx from "clsx";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
-import { ChevronDownIcon } from "@/public/icons";
+import { ChevronDownIcon, ExitIcon } from "@/public/icons";
 import { handleFilter } from "@/src/components/helpers/filter";
 import { AnimationScrollDown } from "@/src/components/ui/Animation/AnimationScrollDown";
 import Divider from "@/src/components/ui/Divider";
+import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
+import { Logo } from "@/src/components/ui/Logo";
+import { Overlay } from "@/src/components/ui/Overlay";
 
+import {
+  supportDealList,
+  SupportDealType,
+} from "../../../constants/navigationBarConstant";
 import {
   ProductGroupType,
   subCategory,
@@ -17,12 +24,21 @@ import { MenuSidebarItem } from "./MenuSidebarItem";
 
 interface Props {
   isOpenMenu: boolean;
+  onClickExitMenu: () => void;
 }
 
 export const MenuSidebar = (props: Props) => {
-  const { isOpenMenu } = props;
+  const { isOpenMenu, onClickExitMenu } = props;
 
   const [selectedSubList, setSelectedSubList] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (isOpenMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isOpenMenu]);
 
   const handleActionMenuItem = (sub: subCategoryType) => {
     if (selectedSubList.includes(sub.id)) {
@@ -35,7 +51,7 @@ export const MenuSidebar = (props: Props) => {
     setSelectedSubList([...selectedSubList, sub.id]);
   };
 
-  const renderMenuSidebarItem = (sub: subCategoryType, index: number) => {
+  const renderMenuSidebarItem = (sub: subCategoryType) => {
     return (
       <Fragment key={sub.id}>
         {/* Menu category item*/}
@@ -63,46 +79,83 @@ export const MenuSidebar = (props: Props) => {
         {/* -> product group */}
         <li className="mx-2 mb-2 rounded-lg bg-[#eaeffa]">
           <AnimationScrollDown isTrigger={selectedSubList.includes(sub.id)}>
-            {sub.productGroup.map((productGroup: ProductGroupType) => {
-              return (
-                <MenuSidebarItem
-                  key={productGroup.id}
-                  name={productGroup.name}
-                  classNameText="!text-base"
-                  suffixIcon={<></>}
-                  onClick={() => {
-                    console.log("trigger product group");
-                  }}
-                />
-              );
-            })}
+            {sub.productGroup.map(
+              (productGroup: ProductGroupType, indexProductGroup: number) => {
+                return (
+                  <Fragment key={productGroup.id}>
+                    <MenuSidebarItem
+                      name={productGroup.name}
+                      classNameText="!text-base !font-semibold"
+                      suffixIcon={<></>}
+                      onClick={() => {
+                        console.log("trigger product group");
+                      }}
+                    />
+                    {sub.productGroup.length - 1 !== indexProductGroup && (
+                      <Divider />
+                    )}
+                  </Fragment>
+                );
+              },
+            )}
           </AnimationScrollDown>
         </li>
-
-        {subCategory.length - 1 !== index && <Divider />}
       </Fragment>
     );
   };
 
   return (
-    <div
-      className={clsx(
-        "fixed z-1024 h-full w-full overflow-y-auto",
-        "transition-all duration-500",
-        isOpenMenu ? "left-0" : "left-[-100%]",
-        "bg-white",
-      )}
-    >
-      <div className={clsx("w-full px-2 py-4", "flex flex-col gap-2")}>
-        <div className="h-full w-full">
-          <ul>
-            {/* menu category list  */}
-            {subCategory.map((sub: subCategoryType, index: number) =>
-              renderMenuSidebarItem(sub, index),
-            )}
-          </ul>
+    <>
+      <div
+        className={clsx(
+          "fixed top-0 z-1024 h-screen overflow-y-auto",
+          "transition-all duration-500",
+          isOpenMenu ? "left-0" : "left-[-100%]",
+          "bg-white",
+        )}
+      >
+        <div className={clsx("w-full px-2 py-4", "flex flex-col gap-2")}>
+          <div className="flex items-center justify-between">
+            <Logo height={111} width={250} classNameWrapper="!justify-start" />
+
+            <div
+              className="flex h-10 w-10 items-center justify-center"
+              onClick={onClickExitMenu}
+            >
+              <ExitIcon />
+            </div>
+          </div>
+
+          <Divider className="my-2" />
+
+          <div className="h-full w-full">
+            <ul>
+              {/* menu category list  */}
+              {subCategory.map((sub: subCategoryType) =>
+                renderMenuSidebarItem(sub),
+              )}
+            </ul>
+          </div>
+
+          <Divider className="my-5" />
+
+          <div className="flex w-full flex-col items-center gap-4">
+            {supportDealList.map((supportDeal: SupportDealType) => {
+              return (
+                <LabelledIcon
+                  prefixIcon={<div>{supportDeal.icon}</div>}
+                  textCustom={<p className="w-max">{supportDeal.name}</p>}
+                  key={supportDeal.id}
+                  className="text-md font-semibold"
+                  isTrigger
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+
+      {isOpenMenu && <Overlay />}
+    </>
   );
 };
