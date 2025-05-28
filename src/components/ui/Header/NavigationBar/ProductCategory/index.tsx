@@ -13,9 +13,9 @@ export const ProductCategory = () => {
   return (
     <div
       className={clsx(
-        "bg-brand-600 cursor-pointer rounded-lg p-4",
+        "bg-brand-600 cursor-pointer rounded-lg px-2 py-4 xl:p-4",
         "w-full max-w-[270px]",
-        "flex items-center justify-between gap-6",
+        "flex items-center justify-between gap-2 xl:gap-6",
         "group",
         "hover:bg-brand-500 transition-all duration-300",
         "relative",
@@ -27,7 +27,9 @@ export const ProductCategory = () => {
         <div>
           <MenuIcon />
         </div>
-        <p className="text-md font-bold text-white">Danh mục sản phẩm</p>
+        <p className="xl:text-md text-base font-bold text-white">
+          Danh mục sản phẩm
+        </p>
       </div>
       <div className="transition-all duration-300 group-hover:-rotate-180">
         <ChevronDownIcon />
