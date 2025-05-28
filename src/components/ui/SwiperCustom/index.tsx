@@ -7,6 +7,7 @@ import "swiper/css/autoplay";
 import "swiper/css/scrollbar";
 import "swiper/css/grid";
 
+import clsx from "clsx";
 import { ReactNode } from "react";
 import { Swiper, useSwiper } from "swiper/react";
 import {
@@ -18,7 +19,9 @@ import {
   ThumbsOptions,
 } from "swiper/types";
 
-import { ChevronDownIcon } from "@/public/icons";
+import { ChevronSwiperIcon } from "@/public/icons";
+
+import { ButtonCustom } from "../../form/ButtonCustom";
 
 interface Props {
   modules?: SwiperModule[];
@@ -47,7 +50,7 @@ interface Props {
 }
 
 const styleButtonSwiper =
-  "h-12 w-12 bg-white rounded-full shadow-[0px_2px_6px_rgba(0,0,0,0.25)] absolute top-[50%] translate-y-[-50%] z-[8]";
+  "h-12 w-12 bg-brand-100 rounded-full shadow-[0px_2px_6px_rgba(0,0,0,0.25)] absolute top-[50%] translate-y-[-50%] z-[8]";
 
 export const SwiperCustom = (props: Props) => {
   const {
@@ -111,14 +114,16 @@ export const SwiperCustom = (props: Props) => {
 const SwiperButtonNext = ({ styleButtonNext }: { styleButtonNext: string }) => {
   const swiper = useSwiper();
   return (
-    <button
+    <ButtonCustom
       onClick={() => swiper.slideNext()}
-      className={`${styleButtonSwiper} ${styleButtonNext}`}
+      className={clsx(
+        styleButtonSwiper,
+        styleButtonNext,
+        "flex items-center justify-center",
+      )}
     >
-      <ChevronDownIcon
-        className={"stroke-brand-800 inline -rotate-90 stroke-[2px]"}
-      />
-    </button>
+      <ChevronSwiperIcon />
+    </ButtonCustom>
   );
 };
 
@@ -129,13 +134,15 @@ const SwiperButtonPreview = ({
 }) => {
   const swiper = useSwiper();
   return (
-    <button
-      className={`${styleButtonSwiper} ${styleButtonPrev}`}
+    <ButtonCustom
+      className={clsx(
+        styleButtonSwiper,
+        styleButtonPrev,
+        "flex items-center justify-center",
+      )}
       onClick={() => swiper.slidePrev()}
     >
-      <ChevronDownIcon
-        className={"stroke-brand-800 inline rotate-90 stroke-[2px]"}
-      />
-    </button>
+      <ChevronSwiperIcon className={"-rotate-180"} />
+    </ButtonCustom>
   );
 };

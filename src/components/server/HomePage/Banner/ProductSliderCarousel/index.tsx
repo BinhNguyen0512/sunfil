@@ -22,7 +22,7 @@ export const ProductSliderCarousel = () => {
   }, []);
 
   return (
-    <div className={clsx("p-12")} ref={divRef}>
+    <div className={clsx("p-12", "banner__carousel-product")} ref={divRef}>
       {!onloadCompleted ? (
         <PreviewList previewNumber={5} />
       ) : (
@@ -55,8 +55,8 @@ export const ProductSliderCarousel = () => {
             navigation={true}
             isButtonNext
             isButtonPreview
-            styleButtonNext="!top-[45%] lg:top-[50%] right-[10px] lg:right-[-24px] z-10"
-            styleButtonPrev="!top-[45%] lg:top-[50%] left-[10px] lg:left-[-24px] z-10"
+            styleButtonNext="!top-[45%] lg:top-[50%] right-[10px] lg:right-[-24px] z-10 absolute"
+            styleButtonPrev="!top-[45%] lg:top-[50%] left-[10px] lg:left-[-24px] z-10 absolute"
           >
             {productList.map((product: ProductDetailType, index: number) => (
               <SwiperSlide key={index}>

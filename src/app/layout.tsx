@@ -1,4 +1,5 @@
 import "@/src/css/globals.css";
+import "@/src/css/swiper.css";
 
 import type { Metadata } from "next";
 import { Montserrat, Nunito } from "next/font/google";
@@ -7,7 +8,6 @@ import { ReactNode } from "react";
 import Footer from "../components/ui/Footer";
 import Header from "../components/ui/Header";
 import { Sticky } from "../components/ui/Sticky";
-// import Sticky from "../components/ui/Sticky";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",

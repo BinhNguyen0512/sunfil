@@ -9,6 +9,7 @@ export { default as CheckboxCheckedIcon } from "./icon_checkbox-checked.svg";
 export { default as CheckedIcon } from "./icon_checked.svg";
 export { default as ChevronDownIcon } from "./icon_chevron-down.svg";
 export { default as ChevronRightDoubleIcon } from "./icon_chevron-right-double.svg";
+export { default as ChevronSwiperIcon } from "./icon_chevron-swiper.svg";
 export { default as ClockIcon } from "./icon_clock.svg";
 export { default as DeviceIcon } from "./icon_device.svg";
 export { default as EnterCodeIcon } from "./icon_enter-code.svg";
