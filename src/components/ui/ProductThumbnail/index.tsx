@@ -1,14 +1,25 @@
 import clsx from "clsx";
 
+import { ProductDetailType } from "@/src/constants/productList";
+
 import { ConvertPrice } from "../../../helpers/convertPrice";
-import { ProductDetailType } from "../Header/constants/productCategoryMenu";
 import { ImageCustom } from "../ImageCustom";
 
 interface Props {
   product: ProductDetailType;
+  classNameImageWrapper?: string;
+  heightImage?: number;
+  widthImage?: number;
+  maxWidthElement?: string;
 }
 export const ProductThumbnail = (props: Props) => {
-  const { product } = props;
+  const {
+    product,
+    classNameImageWrapper = "",
+    widthImage,
+    heightImage,
+    maxWidthElement = "",
+  } = props;
   return (
     <div
       key={product.id}
@@ -20,17 +31,22 @@ export const ProductThumbnail = (props: Props) => {
         "transition duration-300 hover:scale-[1.05]",
       )}
     >
-      <div className="h-full max-w-[184px]">
+      <div className={clsx("h-full", classNameImageWrapper, maxWidthElement)}>
         <ImageCustom
           alt={product.name}
           src={product.srcImage}
-          height={184}
-          width={184}
+          height={heightImage || 184}
+          width={widthImage || 184}
           className="h-full w-full"
         />
       </div>
       <div className="flex flex-col gap-4">
-        <p className="text-md line-clamp-2 min-h-[48px] max-w-[184px] font-bold">
+        <p
+          className={clsx(
+            "text-md line-clamp-2 min-h-[48px] font-bold",
+            maxWidthElement,
+          )}
+        >
           {product.name}
         </p>
         <div className="flex flex-col gap-3">

@@ -17,7 +17,7 @@ export const breadCrumb = [
 
 export default function Home() {
   return (
-    <section className="bg-gray-200 pt-32">
+    <section className="bg-gray-200 pt-32 lg:pt-0">
       <WrapperPage>
         <div className={clsx("py-4 lg:py-6", "flex flex-col gap-8")}>
           <BreadcrumbCustom listBreadCrumb={breadCrumb} />

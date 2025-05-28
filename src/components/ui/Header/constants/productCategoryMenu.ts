@@ -1,5 +1,7 @@
 import slugify from "slugify";
 
+import { ProductDetailType } from "@/src/constants/productList";
+
 export interface subCategoryType {
   id: string;
   srcImage: string;
@@ -13,16 +15,6 @@ export interface ProductGroupType {
   id: string;
   srcImage: string;
   name: string;
-  alias: string;
-}
-
-export interface ProductDetailType {
-  id: string;
-  srcImage: string;
-  name: string;
-  price: number;
-  sellPrice: number;
-  discountPercent: number;
   alias: string;
 }
 

@@ -2,6 +2,8 @@ import clsx from "clsx";
 
 import { ImageCustom } from "@/src/components/ui/ImageCustom";
 
+import { ProductSliderCarousel } from "./ProductSliderCarousel";
+
 const Banner = () => {
   return (
     <div
@@ -17,7 +19,8 @@ const Banner = () => {
           priority
         />
       </div>
-      <div className={clsx("p-12")}>2</div>
+
+      <ProductSliderCarousel />
     </div>
   );
 };

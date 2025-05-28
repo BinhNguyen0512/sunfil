@@ -7,12 +7,12 @@ import { AnimationDropDown } from "@/src/components/ui/Animation/AnimationDropDo
 import Divider from "@/src/components/ui/Divider";
 import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
 import { ProductThumbnail } from "@/src/components/ui/ProductThumbnail";
+import { ProductDetailType } from "@/src/constants/productList";
 
 import {
   initialProduct,
   initialProductGroup,
   initialSubCategoryItem,
-  ProductDetailType,
   ProductGroupType,
   subCategory,
   subCategoryType,
@@ -83,7 +83,13 @@ export const ProductCategoryMenu = (props: Props) => {
             </div>
             <div className="xxl:grid-cols-5 grid grid-cols-3 gap-4 xl:grid-cols-4">
               {productList.map((product: ProductDetailType) => {
-                return <ProductThumbnail product={product} key={product.id} />;
+                return (
+                  <ProductThumbnail
+                    product={product}
+                    key={product.id}
+                    maxWidthElement="max-w-[184px]"
+                  />
+                );
               })}
             </div>
           </div>
