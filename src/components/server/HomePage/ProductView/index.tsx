@@ -1,4 +1,5 @@
 import { ProductFilter } from "./ProductFilter";
+import { ProductFilterMobile } from "./ProductFilter/ProductFilterMobile";
 
 const ProductView = () => {
   return (
@@ -9,7 +10,9 @@ const ProductView = () => {
         </div>
       </div>
 
-      <div className="block lg:hidden">{/* <FilterMobile /> */}</div>
+      <div className="block lg:hidden">
+        <ProductFilterMobile />
+      </div>
 
       <div>2</div>
     </div>
