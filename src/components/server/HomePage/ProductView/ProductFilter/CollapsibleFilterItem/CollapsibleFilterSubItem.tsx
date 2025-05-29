@@ -50,6 +50,8 @@ export const CollapsibleFilterSubItem = (props: Props) => {
 
     toggleMultiValueQueryParam(categoryId, alias);
 
+    scrollToProductView();
+
     if (!selectedCheckedAliasSub.includes(alias)) {
       setSelectedCheckedSub([...selectedCheckedAliasSub, alias]);
       return;
@@ -57,6 +59,14 @@ export const CollapsibleFilterSubItem = (props: Props) => {
 
     const filter = handleFilter(selectedCheckedAliasSub, alias);
     setSelectedCheckedSub(filter);
+  };
+
+  const scrollToProductView = () => {
+    const element = document.getElementById("product-view");
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   const toggleMultiValueQueryParam = useCallback(
@@ -72,7 +82,7 @@ export const CollapsibleFilterSubItem = (props: Props) => {
 
       updatedValues.forEach((v) => params.append(key, v));
 
-      router.push(pathname + "?" + params.toString());
+      router.push(pathname + "?" + params.toString(), { scroll: false });
     },
     [searchParams],
   );

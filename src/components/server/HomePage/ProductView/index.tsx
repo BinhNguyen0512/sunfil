@@ -4,7 +4,7 @@ import { ProductList } from "./ProductList";
 
 const ProductView = () => {
   return (
-    <div id="product-view" className="flex flex-col gap-6 lg:flex-row">
+    <div className="flex flex-col gap-6 lg:flex-row">
       <div className="hidden w-[315px] flex-shrink-0 lg:block">
         <div className="sticky top-0 flex w-full flex-col">
           <ProductFilter />

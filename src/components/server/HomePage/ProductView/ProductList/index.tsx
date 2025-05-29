@@ -7,7 +7,10 @@ import { ProductSortFilter } from "../components/ProductSortFilter";
 
 export const ProductList = () => {
   return (
-    <div className={clsx("h-full w-full", "flex flex-col gap-5")}>
+    <div
+      id="product-view"
+      className={clsx("h-full w-full", "flex flex-col gap-5")}
+    >
       <div className="flex items-center justify-between lg:flex-col lg:gap-2 xl:flex-row xl:gap-0">
         <p className="text-lg font-bold text-black">Danh sách sản phẩm</p>
 

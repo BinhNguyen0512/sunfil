@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 
 import { ChevronDownIcon, FilterIcon } from "@/public/icons";
 import { CollapsibleOptionList } from "@/src/components/ui/CollapsibleOptionList";
@@ -20,6 +20,8 @@ import { CollapsibleFilterSubItem } from "./CollapsibleFilterItem/CollapsibleFil
 const listIdFilter = productCategoryFilterList.map((item) => item.id);
 
 export const ProductFilter = () => {
+  const productViewRef = useRef<HTMLDivElement | null>(null);
+
   const [selectedProductGroupList, setSelectedProductGroupList] =
     useState<string[]>(listIdFilter);
 
@@ -71,7 +73,10 @@ export const ProductFilter = () => {
   };
 
   return (
-    <div className="h-full w-full rounded-lg bg-white py-3">
+    <div
+      ref={productViewRef}
+      className="h-full w-full rounded-lg bg-white py-3"
+    >
       <div className="flex flex-col gap-1">
         <LabelledIcon
           prefixIcon={<FilterIcon />}
