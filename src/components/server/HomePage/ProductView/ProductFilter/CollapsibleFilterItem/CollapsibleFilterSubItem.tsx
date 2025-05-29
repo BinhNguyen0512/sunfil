@@ -1,7 +1,8 @@
 "use client";
 
 import clsx from "clsx";
-import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useState } from "react";
 
 import { LabelledCheckBox } from "@/src/components/form/CheckBoxCustom/LabelledCheckBox";
 import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
@@ -35,13 +36,19 @@ const renderTextPrice = (priceFrom: number, priceTo: number) => {
 export const CollapsibleFilterSubItem = (props: Props) => {
   const { category } = props;
 
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [selectedCheckedAliasSub, setSelectedCheckedSub] = useState<string[]>(
     [],
   );
   const [selectedAroundPrice, setSelectedAroundPrice] = useState<string>("");
 
-  const handleActionSub = (alias: string) => {
+  const handleActionSub = (categoryId: string, alias: string) => {
     if (!alias) return;
+
+    toggleMultiValueQueryParam(categoryId, alias);
 
     if (!selectedCheckedAliasSub.includes(alias)) {
       setSelectedCheckedSub([...selectedCheckedAliasSub, alias]);
@@ -51,6 +58,24 @@ export const CollapsibleFilterSubItem = (props: Props) => {
     const filter = handleFilter(selectedCheckedAliasSub, alias);
     setSelectedCheckedSub(filter);
   };
+
+  const toggleMultiValueQueryParam = useCallback(
+    (key: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      const currentValues = params.getAll(key);
+
+      const updatedValues = currentValues.includes(value)
+        ? handleFilter(currentValues, value)
+        : [...currentValues, value];
+
+      params.delete(key);
+
+      updatedValues.forEach((v) => params.append(key, v));
+
+      router.push(pathname + "?" + params.toString());
+    },
+    [searchParams],
+  );
 
   return (
     <>
@@ -101,10 +126,10 @@ export const CollapsibleFilterSubItem = (props: Props) => {
                 </p>
               }
               onClickElement={() =>
-                handleActionSub(productGroup.alias as string)
+                handleActionSub(category.id, productGroup.alias as string)
               }
               onChange={(e) => {
-                handleActionSub(e.target.value);
+                handleActionSub(category.id, e.target.value);
               }}
               value={productGroup.alias}
               checked={selectedCheckedAliasSub.includes(
