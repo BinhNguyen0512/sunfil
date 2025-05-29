@@ -1,12 +1,15 @@
 import clsx from "clsx";
 
-import { BreadcrumbCustom } from "../components/server/Breadcrumb";
+import {
+  BreadcrumbCustom,
+  BreadcrumbType,
+} from "../components/server/Breadcrumb";
 import Banner from "../components/server/HomePage/Banner";
 import Benefits from "../components/server/HomePage/Benefits";
 import ProductView from "../components/server/HomePage/ProductView";
 import { WrapperPage } from "../components/ui/WrapperPage";
 
-export const breadCrumb = [
+export const breadCrumb: BreadcrumbType[] = [
   {
     name: "Trang chủ",
     link: "/",
