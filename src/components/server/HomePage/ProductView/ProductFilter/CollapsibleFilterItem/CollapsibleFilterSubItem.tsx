@@ -1,10 +1,12 @@
 "use client";
 
 import clsx from "clsx";
+import { useState } from "react";
 
 import { LabelledCheckBox } from "@/src/components/form/CheckBoxCustom/LabelledCheckBox";
 import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
 import { ConvertPrice } from "@/src/helpers/convertPrice";
+import { handleFilter } from "@/src/helpers/filter";
 
 import {
   ProductCategoryFilterType,
@@ -32,6 +34,23 @@ const renderTextPrice = (priceFrom: number, priceTo: number) => {
 
 export const CollapsibleFilterSubItem = (props: Props) => {
   const { category } = props;
+
+  const [selectedCheckedAliasSub, setSelectedCheckedSub] = useState<string[]>(
+    [],
+  );
+
+  const handleActionSub = (alias: string) => {
+    if (!alias) return;
+
+    if (!selectedCheckedAliasSub.includes(alias)) {
+      setSelectedCheckedSub([...selectedCheckedAliasSub, alias]);
+      return;
+    }
+
+    const filter = handleFilter(selectedCheckedAliasSub, alias);
+    setSelectedCheckedSub(filter);
+  };
+
   return (
     <>
       {category.productGroup.map((productGroup: ProductGroupFilterType) => {
@@ -70,10 +89,16 @@ export const CollapsibleFilterSubItem = (props: Props) => {
                   <span className="text-secondary">(24)</span>
                 </p>
               }
-              onClickElement={() => {
-                console.log(productGroup.alias);
+              onClickElement={() =>
+                handleActionSub(productGroup.alias as string)
+              }
+              onChange={(e) => {
+                handleActionSub(e.target.value);
               }}
-              defaultChecked={false}
+              value={productGroup.alias}
+              checked={selectedCheckedAliasSub.includes(
+                productGroup.alias as string,
+              )}
             />
           </li>
         );
