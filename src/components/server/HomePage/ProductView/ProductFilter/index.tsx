@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, Suspense, useRef, useState } from "react";
 
 import { ChevronDownIcon, FilterIcon } from "@/public/icons";
 import { CollapsibleOptionList } from "@/src/components/ui/CollapsibleOptionList";
@@ -63,7 +63,11 @@ export const ProductFilter = () => {
           }
           selectedOptions={selectedProductGroupList}
           collapsibleOptionId={category.id}
-          collapsibleItemSub={<CollapsibleFilterSubItem category={category} />}
+          collapsibleItemSub={
+            <Suspense fallback={<></>}>
+              <CollapsibleFilterSubItem category={category} />
+            </Suspense>
+          }
           classNameSubWrapper="mx-2 mb-2 rounded-lg"
         />
 
