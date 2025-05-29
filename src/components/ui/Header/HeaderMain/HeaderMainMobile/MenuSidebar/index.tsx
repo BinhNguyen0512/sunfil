@@ -58,7 +58,7 @@ export const MenuSidebar = (props: Props) => {
           collapsibleItemTitle={
             <MenuSidebarItemTitle
               name={sub.name}
-              onClick={() => console.log("handle sub menu")}
+              onClick={() => onClickExitMenu()}
               suffixIcon={
                 <div
                   onClick={(e) => {
@@ -92,7 +92,7 @@ export const MenuSidebar = (props: Props) => {
                         classNameText="!text-base !font-semibold"
                         suffixIcon={<></>}
                         onClick={() => {
-                          console.log("trigger product group");
+                          onClickExitMenu();
                         }}
                       />
                       {sub.productGroup.length - 1 !== indexProductGroup && (

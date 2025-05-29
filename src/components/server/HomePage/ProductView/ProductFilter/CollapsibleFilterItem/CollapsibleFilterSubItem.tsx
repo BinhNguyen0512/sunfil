@@ -2,12 +2,17 @@
 
 import clsx from "clsx";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
+import queryString from "query-string";
+import { useCallback, useEffect, useState } from "react";
 
 import { LabelledCheckBox } from "@/src/components/form/CheckBoxCustom/LabelledCheckBox";
 import { LabelledIcon } from "@/src/components/ui/LabelledIcon";
 import { ConvertPrice } from "@/src/helpers/convertPrice";
 import { handleFilter } from "@/src/helpers/filter";
+import {
+  toggleMultiParams,
+  toggleMultiValueQueryParam,
+} from "@/src/helpers/urlSearchParams";
 
 import {
   ProductCategoryFilterType,
@@ -45,10 +50,42 @@ export const CollapsibleFilterSubItem = (props: Props) => {
   );
   const [selectedAroundPrice, setSelectedAroundPrice] = useState<string>("");
 
+  useEffect(() => {
+    if (category.id === Category_Alias_Enum.AROUND_PRICE) return;
+
+    const startSelectedChecked = searchParams.getAll(category.id);
+
+    setSelectedCheckedSub(startSelectedChecked);
+  }, []);
+
+  useEffect(() => {
+    if (category.id !== Category_Alias_Enum.AROUND_PRICE) return;
+
+    let querySearchParams = queryString.parse(window.location.search);
+
+    const find = category.productGroup.find(
+      (item) =>
+        item.priceFrom?.toString() === querySearchParams.priceFrom &&
+        item.priceTo?.toString() === querySearchParams.priceTo,
+    );
+
+    if (!find) return;
+
+    setSelectedAroundPrice(find.id);
+  }, []);
+
+  const scrollToProductView = () => {
+    const element = document.getElementById("product-view");
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const handleActionSub = (categoryId: string, alias: string) => {
     if (!alias) return;
 
-    toggleMultiValueQueryParam(categoryId, alias);
+    handleCheckedQueryParam(categoryId, alias);
 
     scrollToProductView();
 
@@ -61,31 +98,33 @@ export const CollapsibleFilterSubItem = (props: Props) => {
     setSelectedCheckedSub(filter);
   };
 
-  const scrollToProductView = () => {
-    const element = document.getElementById("product-view");
-
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  const toggleMultiValueQueryParam = useCallback(
+  const handleCheckedQueryParam = useCallback(
     (key: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      const currentValues = params.getAll(key);
-
-      const updatedValues = currentValues.includes(value)
-        ? handleFilter(currentValues, value)
-        : [...currentValues, value];
-
-      params.delete(key);
-
-      updatedValues.forEach((v) => params.append(key, v));
-
-      router.push(pathname + "?" + params.toString(), { scroll: false });
+      toggleMultiValueQueryParam(searchParams, key, value, router, pathname);
     },
     [searchParams],
   );
+
+  const handleActionPrice = (productGroup: ProductGroupFilterType) => {
+    scrollToProductView();
+
+    setSelectedAroundPrice(productGroup.id);
+
+    handleCheckedQueryParamsPrice(productGroup);
+  };
+
+  const handleCheckedQueryParamsPrice = (
+    productGroup: ProductGroupFilterType,
+  ) => {
+    toggleMultiParams(
+      {
+        priceTo: productGroup.priceTo?.toString() || "",
+        priceFrom: productGroup.priceFrom?.toString() || "",
+      },
+      router,
+      pathname,
+    );
+  };
 
   return (
     <>
@@ -118,7 +157,7 @@ export const CollapsibleFilterSubItem = (props: Props) => {
                   </p>
                 }
                 onClick={() => {
-                  setSelectedAroundPrice(productGroup.id);
+                  handleActionPrice(productGroup);
                 }}
               />
             </li>

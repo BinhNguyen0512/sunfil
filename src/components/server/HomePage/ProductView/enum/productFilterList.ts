@@ -27,3 +27,9 @@ export enum ProductGroup_Alias_Enum {
   JANPANESE = "janpanese",
   CHINESE = "chinese",
 }
+
+export enum Alias_Price_Enum {
+  PRICE_TO = "priceTo",
+  PRICE_TO_PRICE_FROM = "priceTo-priceFrom",
+  PRICE_FROM = "priceFrom",
+}

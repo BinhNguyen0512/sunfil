@@ -55,24 +55,28 @@ export const productCategoryFilterList: ProductCategoryFilterType[] = [
     productGroup: [
       {
         id: "1",
+        alias: "priceTo",
         priceTo: 100000,
         priceFrom: 0,
         name: "Dưới",
       },
       {
         id: "2",
+        alias: "priceTo-priceFrom",
         priceFrom: 100000,
         name: "-",
         priceTo: 300000,
       },
       {
         id: "3",
+        alias: "priceTo-priceFrom",
         priceFrom: 300000,
         name: "-",
         priceTo: 500000,
       },
       {
         id: "4",
+        alias: "priceFrom",
         priceFrom: 500000,
         priceTo: 0,
         name: "Trên",
