@@ -9,7 +9,7 @@ import Benefits from "../components/server/HomePage/Benefits";
 import ProductView from "../components/server/HomePage/ProductView";
 import { WrapperPage } from "../components/ui/WrapperPage";
 
-export const breadCrumb: BreadcrumbType[] = [
+const listBreadCrumb: BreadcrumbType[] = [
   {
     name: "Trang chủ",
     link: "/",
@@ -24,7 +24,7 @@ export default function Home() {
     <section className="bg-gray-200 pt-32 lg:pt-0">
       <WrapperPage>
         <div className={clsx("py-4 lg:py-6", "flex flex-col gap-8")}>
-          <BreadcrumbCustom listBreadCrumb={breadCrumb} />
+          <BreadcrumbCustom listBreadCrumb={listBreadCrumb} />
 
           <Banner />
           <ProductView />
