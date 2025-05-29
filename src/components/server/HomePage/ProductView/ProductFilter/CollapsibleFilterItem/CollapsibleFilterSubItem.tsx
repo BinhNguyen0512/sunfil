@@ -38,6 +38,7 @@ export const CollapsibleFilterSubItem = (props: Props) => {
   const [selectedCheckedAliasSub, setSelectedCheckedSub] = useState<string[]>(
     [],
   );
+  const [selectedAroundPrice, setSelectedAroundPrice] = useState<string>("");
 
   const handleActionSub = (alias: string) => {
     if (!alias) return;
@@ -62,9 +63,19 @@ export const CollapsibleFilterSubItem = (props: Props) => {
                   "cursor-pointer rounded-md border-[1px] border-solid border-[#919EAB3D] p-2",
                   "h-full w-full",
                   "mb-2 justify-center",
+                  productGroup.id === selectedAroundPrice
+                    ? "border-brand-500 transition-all duration-300"
+                    : "",
                 )}
                 textCustom={
-                  <p className="text-base font-medium text-black">
+                  <p
+                    className={clsx(
+                      "text-base font-medium text-black",
+                      productGroup.id === selectedAroundPrice
+                        ? "text-brand-500 transition-all duration-300"
+                        : "",
+                    )}
+                  >
                     {renderTextPrice(
                       productGroup.priceFrom || 0,
                       productGroup.priceTo || 0,
@@ -72,7 +83,7 @@ export const CollapsibleFilterSubItem = (props: Props) => {
                   </p>
                 }
                 onClick={() => {
-                  console.log(productGroup.priceFrom, productGroup.priceTo);
+                  setSelectedAroundPrice(productGroup.id);
                 }}
               />
             </li>
