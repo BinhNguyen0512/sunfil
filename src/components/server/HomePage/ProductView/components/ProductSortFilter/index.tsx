@@ -27,10 +27,8 @@ export const ProductSortFilter = () => {
             <ButtonCustom
               key={productSort.id}
               className={clsx(
-                "rounded-lg border-white bg-white px-4 py-2",
-                selectedSort === productSort.id
-                  ? "!border-brand-500 border-[1px] border-solid"
-                  : "",
+                "rounded-lg border-[1px] border-solid border-white bg-white px-4 py-2",
+                selectedSort === productSort.id ? "!border-brand-500" : "",
               )}
               onClick={() => setSelectedSort(productSort.id)}
             >
